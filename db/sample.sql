@@ -88,14 +88,15 @@ INSERT INTO `prefecture` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- テーブルの構造 `user`
+-- テーブルの構造 `spot`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `spot` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
+  `tel` varchar(255) NOT NULL,
   `prefecture_id` int(11) NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
