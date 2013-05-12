@@ -13,6 +13,12 @@ if ($mysqli->connect_errno) {
 	exit();
 }
 
+/* 文字セットを utf8 に変更します */
+if (!$mysqli->set_charset("utf8")) {
+    printf("Error loading character set utf8: %s\n", $mysqli->error);
+    exit();
+}
+
 for ($i=1; $i <= 10000; $i++) { 
 	$query = "INSERT INTO `spot` (`id`, `name`, `tel`, `prefecture_id`, `description`) VALUES ($i, 'スポット$i', '0123-123-123', ".mt_rand(1, 47).", '紹介文$i')";
 
