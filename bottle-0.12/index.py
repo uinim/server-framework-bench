@@ -8,7 +8,7 @@ from json import dumps
 from pprint import pprint
 
 connector = MySQLdb.connect(host="localhost", db="sample", user="root", passwd="", charset="utf8")
-cursor = connector.cursor()
+cursor = connector.cursor(MySQLdb.cursors.DictCursor)
 
 @route('/')
 def index():
@@ -18,7 +18,7 @@ def index():
 def index(name='World'):
     return template('<b>Hello {{name}}</b>!', name=name)
 
-@route('/api/')
+@route('/api')
 def index():
 	cursor.execute("SELECT spot.*, prefecture.name AS prefecture_name FROM spot LEFT JOIN prefecture ON spot.prefecture_id = prefecture.id ORDER BY id DESC LIMIT 10")
 	rows = cursor.fetchall()
